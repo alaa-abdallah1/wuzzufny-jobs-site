@@ -32,7 +32,7 @@
             <span class="textLink">{{ link.name }}</span>
           </span>
           <v-menu v-else open-on-hover offset-y>
-            <template v-slot:activator="{on, attrs}">
+            <template v-slot:activator="{ on, attrs }">
               <v-btn
                 v-bind="attrs"
                 v-on="on"
@@ -116,34 +116,34 @@
 </template>
 
 <script>
-import {mapState, mapMutations} from "vuex"
+import { mapState, mapMutations } from "vuex";
 export default {
   name: "Navbar",
 
   data: () => ({
     drawer: false,
-    group: null,
+    group: null
   }),
   computed: {
     ...mapState(["user"]),
     loggedIn() {
-      return this.$store.getters.loggedIn
+      return this.$store.getters.loggedIn;
     },
     userLinks() {
-      return this.links.filter(link => link.status !== "guest")
+      return this.links.filter(link => link.status !== "guest");
     },
     guestLinks() {
-      return this.links.filter(link => link.status !== "user")
+      return this.links.filter(link => link.status !== "user");
     },
     userName() {
       if (this.loggedIn) {
         if (this.user.name.length > 12) {
-          return this.user.name.slice(0, 12) + "..."
+          return this.user.name.slice(0, 12) + "...";
         } else {
-          return this.user.name
+          return this.user.name;
         }
       }
-      return ""
+      return "";
     },
     links() {
       return [
@@ -151,19 +151,19 @@ export default {
         {
           name: "Home",
           icon: "mdi-home",
-          route: "/",
+          route: "/"
         },
         {
           name: "Create Job",
           icon: "mdi-folder-plus",
           route: "/job/create",
-          status: "user",
+          status: "user"
         },
         {
           name: this.userName,
           img: this.user.avatar,
           route: "/profile/view",
-          status: "user",
+          status: "user"
         },
         {
           dropdownName: "More",
@@ -177,50 +177,50 @@ export default {
                 icon: "mdi-home",
                 route: "/profile/jobs",
                 status: "user",
-                active: true,
+                active: true
               },
               {
                 name: "Edit Profile",
                 icon: "mdi-pencil",
                 route: "/profile/edit",
-                status: "user",
+                status: "user"
               },
               {
                 name: "Log Out",
                 icon: "mdi-account-plus",
                 status: "user",
-                function: "logoutUser",
-              },
-            ],
-          },
+                function: "logoutUser"
+              }
+            ]
+          }
         },
         {
           name: "Sign In",
           icon: "mdi-login",
           route: "/sign-in",
-          status: "guest",
+          status: "guest"
         },
         {
           name: "Sign Up",
           icon: "mdi-account-plus",
           route: "/sign-up",
-          status: "guest",
-        },
-      ]
-    },
+          status: "guest"
+        }
+      ];
+    }
   },
   methods: {
     ...mapMutations(["logout"]),
     logoutUser() {
-      this.logout()
+      this.logout();
     },
     fireFunction(func) {
       if (func) {
-        this[func]()
+        this[func]();
       }
-    },
-  },
-}
+    }
+  }
+};
 </script>
 <style>
 .navbar-links-sm .textLink {

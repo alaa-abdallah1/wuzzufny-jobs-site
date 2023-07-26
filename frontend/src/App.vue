@@ -30,78 +30,78 @@
 </template>
 
 <script>
-import Navbar from "./components/navbar"
-import Footer from "./components/footer"
-import ChangeColor from "./components/ChangeColor"
-import Loader from "./components/loader"
-import Popup from "./components/popup"
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
+import ChangeColor from "./components/ChangeColor";
+import Loader from "./components/loader";
+import Popup from "./components/popup";
 
-import {mapState, mapMutations, mapActions} from "vuex"
+import { mapState, mapMutations, mapActions } from "vuex";
 export default {
   name: "App",
   data() {
     return {
-      viewLoader: true,
-    }
+      viewLoader: true
+    };
   },
   components: {
     Navbar,
     Footer,
     ChangeColor,
     Loader,
-    Popup,
+    Popup
   },
   computed: {
-    ...mapState(["loader", "popup", "startPage"]),
+    ...mapState(["loader", "popup", "startPage"])
   },
   methods: {
     ...mapMutations(["startPageStatus"]),
     ...mapActions({
       loadingStatus: "loader/loadingStatus",
-      changeType: "loader/changeType",
-    }),
+      changeType: "loader/changeType"
+    })
   },
   created() {
-    this.changeType("pollets")
+    this.changeType("pollets");
     // Add a response interceptor that logout if the token is fake
     this.axios.interceptors.response.use(
       response => response,
       error => {
         if (error.response.status === 401) {
-          this.startPageStatus(true)
-          this.$store.commit("logout")
-          this.loadingStatus(false)
+          this.startPageStatus(true);
+          this.$store.commit("logout");
+          this.loadingStatus(false);
         }
         if (error.response.status === 404) {
-          this.$router.push({name: "notFound"})
-          this.loadingStatus(false)
+          this.$router.push({ name: "notFound" });
+          this.loadingStatus(false);
         }
-        return Promise.reject(error)
+        return Promise.reject(error);
       }
-    )
+    );
 
     // send those headers when app created !
     // this.axios.defaults.baseURL = "https://a4ta8al.herokuapp.com";
-    this.axios.defaults.baseURL = "http://127.0.0.1:8000"
-    this.axios.defaults.headers.common["Accept"] = "application/json"
+    this.axios.defaults.baseURL = "http://127.0.0.1:8000";
+    this.axios.defaults.headers.common["Accept"] = "application/json";
     this.axios.defaults.headers.common["Accept"] =
-      "application/vnd.heroku+json; version=3"
+      "application/vnd.heroku+json; version=3";
     if (localStorage.getItem("token")) {
       this.axios.defaults.headers.common["Authorization"] =
-        "Bearer " + localStorage.getItem("token")
-      this.$store.commit("getUserData")
+        "Bearer " + localStorage.getItem("token");
+      this.$store.commit("getUserData");
     } else {
-      this.startPageStatus(true)
-      this.loadingStatus(false)
-      this.changeType("circle")
+      this.startPageStatus(true);
+      this.loadingStatus(false);
+      this.changeType("circle");
     }
-  },
+  }
   // watch: {
   //   $route(to) {
   //     document.title = to.meta.title || "Wuzzufny";
   //   }
   // }
-}
+};
 </script>
 
 <style>

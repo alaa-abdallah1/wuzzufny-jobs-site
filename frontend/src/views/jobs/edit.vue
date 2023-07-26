@@ -24,36 +24,36 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue"
-import {mapState, mapGetters, mapMutations, mapActions} from "vuex"
+import CustomForm from "@/components/CustomForm.vue";
+import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   components: {
-    CustomForm,
+    CustomForm
   },
   metaInfo() {
     return {
-      title: "Edit Job",
-    }
+      title: "Edit Job"
+    };
   },
   data: () => ({
     job: {},
-    isLoading: true,
+    isLoading: true
   }),
   computed: {
     ...mapState(["loader"]),
     ...mapGetters(["countriesData", "skillsData"]),
     jobId() {
-      return this.$route.params.id
+      return this.$route.params.id;
     },
     formBtn() {
       return {
         text: "Edit",
         bindOptions: {
           type: "submit",
-          color: "mainColor",
-        },
-      }
+          color: "mainColor"
+        }
+      };
     },
     fields() {
       return [
@@ -66,9 +66,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write Job's Name",
-            counter: 40,
+            counter: 40
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -79,9 +79,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write Job's Title",
-            counter: 60,
+            counter: 60
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-textarea",
@@ -92,9 +92,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write job Description",
-            counter: 2000,
+            counter: 2000
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-textarea",
@@ -105,9 +105,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write job Employee Qualification",
-            counter: 2000,
+            counter: 2000
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-select",
@@ -117,10 +117,10 @@ export default {
           rules: "required",
           bindOptions: {
             items: this.countriesData,
-            menuProps: {offsetY: true},
-            chips: true,
+            menuProps: { offsetY: true },
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -131,9 +131,9 @@ export default {
           bindOptions: {
             placeholder: "From ? Years OF Experience",
             counter: 2,
-            type: "number",
+            type: "number"
           },
-          width: {xs: 6, sm: 3, lg: 2},
+          width: { xs: 6, sm: 3, lg: 2 }
         },
         {
           component: "v-text-field",
@@ -143,9 +143,9 @@ export default {
           rules: "required|integer|min:1|max:2",
           bindOptions: {
             placeholder: "To ? Years OF Experience",
-            type: "number",
+            type: "number"
           },
-          width: {xs: 6, sm: 3, lg: 2},
+          width: { xs: 6, sm: 3, lg: 2 }
         },
         {
           component: "v-text-field",
@@ -155,9 +155,9 @@ export default {
           rules: "required|min:20|max:100",
           bindOptions: {
             placeholder: "Write Job's Address",
-            counter: 100,
+            counter: 100
           },
-          width: {xs: 12, sm: 12, lg: 8},
+          width: { xs: 12, sm: 12, lg: 8 }
         },
         {
           component: "v-select",
@@ -167,13 +167,13 @@ export default {
           rules: "required|min: 2|max:50",
           bindOptions: {
             items: this.skillsData,
-            menuProps: {offsetY: true},
+            menuProps: { offsetY: true },
             deletableChips: true,
             multiple: true,
             seachable: true,
-            chips: true,
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-select",
@@ -183,10 +183,10 @@ export default {
           rules: "required",
           bindOptions: {
             items: ["Full Time", "Part Time"],
-            menuProps: {offsetY: true},
-            chips: true,
+            menuProps: { offsetY: true },
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
 
         {
@@ -197,9 +197,9 @@ export default {
           rules: "required|min:2|max:40",
           bindOptions: {
             placeholder: "Write Company Name",
-            counter: 40,
+            counter: 40
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -210,9 +210,9 @@ export default {
           bindOptions: {
             placeholder: "Write Salary In Dollars",
             type: "number",
-            prependIcon: "$",
+            prependIcon: "$"
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-textarea",
@@ -224,9 +224,9 @@ export default {
             required: true,
             placeholder: "Write Brief About Company",
             counter: 1000,
-            rows: "5",
+            rows: "5"
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-file-input",
@@ -237,9 +237,9 @@ export default {
           bindOptions: {
             placeholder: "update Company Logo",
             prependIcon: "mdi-camera",
-            chips: true,
+            chips: true
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-switch",
@@ -248,36 +248,36 @@ export default {
           value: this.job.status,
           bindOptions: {
             ["true-value"]: 1,
-            ["false-value"]: 0,
+            ["false-value"]: 0
           },
-          width: {xs: 12, sm: 12, lg: 12},
-        },
-      ]
+          width: { xs: 12, sm: 12, lg: 12 }
+        }
+      ];
     },
     request() {
       return {
         method: "post",
         url: `api/job/${this.jobId}`,
-        data: this.job,
-      }
-    },
+        data: this.job
+      };
+    }
   },
   methods: {
     ...mapMutations(["getSkillsAndCountriesData"]),
     ...mapActions({}),
     getData() {
       this.axios.get(`api/job/${this.jobId}/edit`).then(res => {
-        this.job = res.data
-        this.isLoading = false
-      })
+        this.job = res.data;
+        this.isLoading = false;
+      });
     },
-    update() {},
+    update() {}
   },
   created() {
-    this.getData()
-    this.getSkillsAndCountriesData()
-  },
-}
+    this.getData();
+    this.getSkillsAndCountriesData();
+  }
+};
 </script>
 <style>
 .viewBtn {

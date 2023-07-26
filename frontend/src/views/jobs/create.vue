@@ -14,17 +14,17 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue"
-import {mapGetters} from "vuex"
+import CustomForm from "@/components/CustomForm.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
-    CustomForm,
+    CustomForm
   },
   metaInfo() {
     return {
-      title: `Create Job`,
-    }
+      title: `Create Job`
+    };
   },
   data: () => ({}),
   computed: {
@@ -34,9 +34,9 @@ export default {
         text: "Create",
         bindOptions: {
           type: "submit",
-          color: "mainColor",
-        },
-      }
+          color: "mainColor"
+        }
+      };
     },
     fields() {
       return [
@@ -49,9 +49,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write Job's Name",
-            counter: 40,
+            counter: 40
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -62,9 +62,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write Job's Title",
-            counter: 60,
+            counter: 60
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-textarea",
@@ -75,9 +75,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write job Description",
-            counter: 2000,
+            counter: 2000
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-textarea",
@@ -88,9 +88,9 @@ export default {
           bindOptions: {
             required: true,
             placeholder: "Write job Employee Qualification",
-            counter: 2000,
+            counter: 2000
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-select",
@@ -100,10 +100,10 @@ export default {
           rules: "required",
           bindOptions: {
             items: this.countriesData,
-            menuProps: {offsetY: true},
-            chips: true,
+            menuProps: { offsetY: true },
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -115,9 +115,9 @@ export default {
             placeholder: "From ? Years OF Experience",
             counter: 2,
             type: "number",
-            min: 0,
+            min: 0
           },
-          width: {xs: 6, sm: 3, lg: 2},
+          width: { xs: 6, sm: 3, lg: 2 }
         },
         {
           component: "v-text-field",
@@ -128,9 +128,9 @@ export default {
           bindOptions: {
             placeholder: "To ? Years OF Experience",
             type: "number",
-            min: 1,
+            min: 1
           },
-          width: {xs: 6, sm: 3, lg: 2},
+          width: { xs: 6, sm: 3, lg: 2 }
         },
         {
           component: "v-text-field",
@@ -140,9 +140,9 @@ export default {
           rules: "required|min:20|max:100",
           bindOptions: {
             placeholder: "Write Job's Address",
-            counter: 100,
+            counter: 100
           },
-          width: {xs: 12, sm: 12, lg: 8},
+          width: { xs: 12, sm: 12, lg: 8 }
         },
         {
           component: "v-select",
@@ -152,13 +152,13 @@ export default {
           rules: "required|min: 2|max:50",
           bindOptions: {
             items: this.skillsData,
-            menuProps: {offsetY: true},
+            menuProps: { offsetY: true },
             deletableChips: true,
             multiple: true,
             seachable: true,
-            chips: true,
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-select",
@@ -168,10 +168,10 @@ export default {
           rules: "required",
           bindOptions: {
             items: ["Full Time", "Part Time"],
-            menuProps: {offsetY: true},
-            chips: true,
+            menuProps: { offsetY: true },
+            chips: true
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
 
         {
@@ -182,9 +182,9 @@ export default {
           rules: "required|min:10|max:40",
           bindOptions: {
             placeholder: "Write Company Name",
-            counter: 40,
+            counter: 40
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-text-field",
@@ -196,9 +196,9 @@ export default {
             placeholder: "Write Salary In Dollars",
             type: "number",
             min: 1,
-            prependIcon: "$",
+            prependIcon: "$"
           },
-          width: {xs: 12, sm: 6, lg: 4},
+          width: { xs: 12, sm: 6, lg: 4 }
         },
         {
           component: "v-textarea",
@@ -210,9 +210,9 @@ export default {
             required: true,
             placeholder: "Write Brief About Company",
             counter: 1000,
-            rows: "5",
+            rows: "5"
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-file-input",
@@ -223,9 +223,9 @@ export default {
           bindOptions: {
             placeholder: "Insert Company Logo",
             prependIcon: "mdi-camera",
-            chips: true,
+            chips: true
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-switch",
@@ -234,27 +234,27 @@ export default {
           value: 1,
           bindOptions: {
             ["true-value"]: 1,
-            ["false-value"]: 0,
+            ["false-value"]: 0
           },
-          width: {xs: 12, sm: 12, lg: 12},
-        },
-      ]
+          width: { xs: 12, sm: 12, lg: 12 }
+        }
+      ];
     },
     request() {
       return {
         method: "post",
         url: `api/job/create`,
-        data: this.user,
-      }
-    },
+        data: this.user
+      };
+    }
   },
   methods: {
     create(res) {
-      this.$router.push({name: "job/view", params: {id: res.data.job.id}})
-    },
+      this.$router.push({ name: "job/view", params: { id: res.data.job.id } });
+    }
   },
   created() {
-    this.$store.commit("getSkillsAndCountriesData")
-  },
-}
+    this.$store.commit("getSkillsAndCountriesData");
+  }
+};
 </script>

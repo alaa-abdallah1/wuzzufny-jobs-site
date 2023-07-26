@@ -12,7 +12,7 @@
     >
       <span class="text-capitalize">{{ popup.text }}</span>
 
-      <template v-slot:action="{attrs}">
+      <template v-slot:action="{ attrs }">
         <v-btn
           :color="'#fff'"
           small
@@ -32,21 +32,21 @@ export default {
     popup: {
       show: {
         type: Boolean,
-        default: true,
+        default: true
       },
       text: {
-        type: String,
+        type: String
       },
       timeout: {
         type: Number,
-        default: 50000,
+        default: 50000
       },
       color: {
-        type: String,
-      },
-    },
-  },
-}
+        type: String
+      }
+    }
+  }
+};
 </script>
 
 <style scoped>

@@ -44,7 +44,7 @@
               :to="`/job/view/${job.id}`"
               :class="[
                 'pa-4 mb-4',
-                $vuetify.breakpoint.xs ? 'text-center' : '',
+                $vuetify.breakpoint.xs ? 'text-center' : ''
               ]"
               v-for="(job, index) in jobs"
               :key="index"
@@ -107,17 +107,17 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue"
-import {mapGetters} from "vuex"
+import CustomForm from "@/components/CustomForm.vue";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
-    CustomForm,
+    CustomForm
   },
   metaInfo() {
     return {
-      title: "Home",
-    }
+      title: "Home"
+    };
   },
   data() {
     return {
@@ -129,22 +129,22 @@ export default {
       url: "",
       name: "",
       country: "",
-      isLoading: false,
-    }
+      isLoading: false
+    };
   },
   computed: {
     ...mapGetters(["countriesData"]),
 
     query() {
-      return `name=${this.name}&&country=${this.country}`
+      return `name=${this.name}&&country=${this.country}`;
     },
     formBtn() {
       return {
         text: "Search",
         bindOptions: {
-          type: "submit",
-        },
-      }
+          type: "submit"
+        }
+      };
     },
     fields() {
       return [
@@ -158,9 +158,9 @@ export default {
             rules: [],
             required: true,
             placeholder: "Search By Job's Name",
-            counter: 20,
+            counter: 20
           },
-          width: {xs: 12, sm: 12, lg: 12},
+          width: { xs: 12, sm: 12, lg: 12 }
         },
         {
           component: "v-select",
@@ -171,68 +171,68 @@ export default {
           bindOptions: {
             items: this.countriesData,
             placeholder: "Search By Job's Country",
-            menuProps: {offsetY: true},
+            menuProps: { offsetY: true },
             multiple: true,
             deletableChips: true,
-            chips: true,
+            chips: true
           },
-          width: {xs: 12, sm: 12, lg: 12},
-        },
-      ]
+          width: { xs: 12, sm: 12, lg: 12 }
+        }
+      ];
     },
     request() {
-      return {}
+      return {};
     },
     formBindOptions: {
       get() {
         return {
           color: "mainColor",
           class: "BaZoka",
-          href: "www.facebook.com",
-        }
-      },
-    },
+          href: "www.facebook.com"
+        };
+      }
+    }
   },
   methods: {
     getData(page = 1) {
-      this.isLoading = true
+      this.isLoading = true;
       this.axios
         .get(`api/jobs?name=${this.name}&&country=${this.country}`, {
-          params: {page},
+          params: { page }
         })
-        .then(({data}) => {
+        .then(({ data }) => {
           this.pagination = {
             current_page: data.current_page,
             from: data.from,
             to: data.to,
             last_page: data.last_page,
-            total: Math.ceil(data.total / data.per_page),
-          }
+            total: Math.ceil(data.total / data.per_page)
+          };
 
-          this.jobs = data.data
+          this.jobs = data.data;
 
-          this.noData = !this.jobs?.length
+          this.noData = !this.jobs?.length;
 
-          window.scrollTo(0, 0)
+          window.scrollTo(0, 0);
         })
-        .finally(() => (this.isLoading = false))
+        .finally(() => (this.isLoading = false));
     },
 
     getInputsValues(fieldName, fieldValue) {
       if (fieldName === "name") {
-        this.name = fieldValue
+        this.name = fieldValue;
       }
 
       if (fieldName === "country") {
-        this.country = fieldValue
+        this.country = fieldValue;
       }
-    },
+    }
   },
   created() {
-    this.getData()
-    this.$store.commit("getSkillsAndCountriesData")
-  },
-}
+    this.getData();
+    this.$store.commit("getSkillsAndCountriesData");
+  }
+};
 </script>
 <style scoped>
 .noData {

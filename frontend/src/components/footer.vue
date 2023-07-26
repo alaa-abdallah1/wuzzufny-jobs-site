@@ -33,15 +33,15 @@ export default {
     icons: [
       {
         href: "https://www.linkedin.com/in/alaa-abdallah1/",
-        name: "mdi-linkedin",
+        name: "mdi-linkedin"
       },
       {
         href: "https://github.com/alaa-abdallah1",
-        name: "mdi-github",
-      },
-    ],
-  }),
-}
+        name: "mdi-github"
+      }
+    ]
+  })
+};
 </script>
 
 <style scoped>
