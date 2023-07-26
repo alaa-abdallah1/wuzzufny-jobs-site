@@ -84,13 +84,13 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex'
 
 export default {
   metaInfo() {
     return {
-      title: "Your Jobs"
-    };
+      title: 'My Jobs'
+    }
   },
   data() {
     return {
@@ -99,77 +99,77 @@ export default {
       btnLoading: false,
       confirmBox: false,
       process: false,
-      search: "",
+      search: '',
       dialog: false,
       dialogDelete: false,
       index: -1,
       itemId: 1
-    };
+    }
   },
   computed: {
-    ...mapState(["loader"]),
+    ...mapState(['loader']),
 
     bindOptions() {
       return {
         dense: true
-      };
+      }
     },
     headers() {
       return [
         {
-          text: "Name",
+          text: 'Name',
           sortable: true,
-          value: "name"
+          value: 'name'
         },
         {
-          text: "Actions",
-          align: "center",
-          value: "actions"
+          text: 'Actions',
+          align: 'center',
+          value: 'actions'
         }
-      ];
+      ]
     }
   },
   methods: {
     ...mapActions({
-      popupData: "popup/popupData"
+      popupData: 'popup/popupData'
     }),
     getData() {
-      this.loading = true;
+      this.loading = true
       this.axios.get(`api/user/jobs`).then(res => {
-        this.items = res.data;
-        this.loading = false;
-      });
+        this.items = res.data
+        this.loading = false
+      })
     },
     deleteItem(index, itemId) {
-      this.popupData({ show: false });
-      this.index = index;
-      this.itemId = itemId;
-      this.dialogDelete = true;
+      this.popupData({ show: false })
+      this.index = index
+      this.itemId = itemId
+      this.dialogDelete = true
     },
 
     deleteItemConfirm() {
-      this.btnLoading = true;
+      this.btnLoading = true
       this.axios.delete(`api/job/${this.itemId}`).then(res => {
-        this.items.splice(this.index, 1);
-        this.closeDelete();
-        this.btnLoading = false;
+        this.items.splice(this.index, 1)
+        this.closeDelete()
+        this.btnLoading = false
         this.popupData({
           show: true,
           text: res.data.msg
-        });
-      });
+        })
+      })
     },
     closeDelete() {
-      this.dialogDelete = false;
-      this.index = "";
-      this.itemId = "";
+      this.dialogDelete = false
+      this.index = ''
+      this.itemId = ''
     },
     clickRow(row) {
-      this.$router.push(`/job/view/${row.id}`);
+      this.$router.push(`/job/view/${row.id}`)
     }
   },
   created() {
-    this.getData();
+    this.getData()
   }
-};
+}
 </script>

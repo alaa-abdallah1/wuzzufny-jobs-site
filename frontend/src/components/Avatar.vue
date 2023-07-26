@@ -26,8 +26,8 @@ export default {
   },
   data() {
     return {
-      data: ""
-    };
+      data: ''
+    }
   },
   computed: {
     // localValue: {
@@ -41,11 +41,11 @@ export default {
   },
   methods: {
     clickInput() {
-      this.$refs.file.click();
+      this.$refs.file.click()
     },
     fileValue(file) {
-      this.data = file.target.files[0];
-      this.$emit("file", file.target.files[0]);
+      this.data = file.target.files[0]
+      this.$emit('file', file.target.files[0])
       // if (file) {
       //   this.value = URL.createObjectURL(file.target.files[0]);
       // } else {
@@ -53,10 +53,10 @@ export default {
       // }
     },
     defaultImg() {
-      return require("@/assets/images/profile-pic.jpg");
+      return require('@/assets/images/profile-pic.jpg')
     }
   }
-};
+}
 </script>
 
 <style scoped>

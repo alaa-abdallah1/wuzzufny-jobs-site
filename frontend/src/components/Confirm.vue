@@ -31,13 +31,13 @@ export default {
   methods: {
     hide() {
       this.$forceUpdate(() => {
-        return (this.showBox = false);
-      });
+        return (this.showBox = false)
+      })
     },
     process() {
-      this.$emit("confirm");
-      this.showBox = false;
+      this.$emit('confirm')
+      this.showBox = false
     }
   }
-};
+}
 </script>

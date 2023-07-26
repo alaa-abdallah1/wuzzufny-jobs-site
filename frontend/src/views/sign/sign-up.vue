@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue";
+import CustomForm from '@/components/CustomForm.vue'
 
 export default {
   components: {
@@ -31,84 +31,84 @@ export default {
   metaInfo() {
     return {
       title: `Sign Up`
-    };
+    }
   },
   computed: {
     formBtn() {
       return {
-        text: "Sign Up",
+        text: 'Sign Up',
         center: true,
         bindOptions: {
-          type: "submit",
-          color: "mainColor"
+          type: 'submit',
+          color: 'mainColor'
         }
-      };
+      }
     },
     fields() {
       return [
         {
-          component: "v-text-field",
-          label: "Full Name",
-          key: "name",
-          value: "",
-          rules: "required|min:4|max:20",
+          component: 'v-text-field',
+          label: 'Full Name',
+          key: 'name',
+          value: '',
+          rules: 'required|min:4|max:20',
           bindOptions: {
-            placeholder: "Write Your Full Name",
+            placeholder: 'Write Your Full Name',
             counter: 20
           },
           width: { xs: 12, sm: 12, lg: 6 }
         },
         {
-          component: "v-text-field",
-          label: "Your Email",
-          key: "email",
-          value: "",
-          rules: "required|email",
+          component: 'v-text-field',
+          label: 'Your Email',
+          key: 'email',
+          value: '',
+          rules: 'required|email',
           bindOptions: {
-            placeholder: "Write Your Email"
+            placeholder: 'Write Your Email'
           },
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "password",
-          label: "Password",
-          key: "password",
+          component: 'password',
+          label: 'Password',
+          key: 'password',
           value: null,
-          rules: "required|min:8",
+          rules: 'required|min:8',
           bindOptions: {
-            type: "password",
-            placeholder: "Write Your Password",
-            ref: "password"
+            type: 'password',
+            placeholder: 'Write Your Password',
+            ref: 'password'
           },
           width: { xs: 12, sm: 12, lg: 6 }
         },
         {
-          component: "password",
-          label: "Confirm Password",
-          key: "password_confirmation",
+          component: 'password',
+          label: 'Confirm Password',
+          key: 'password_confirmation',
           value: null,
-          rules: "required|min:8|confirmed:password",
+          rules: 'required|min:8|confirmed:password',
           bindOptions: {
-            type: "password",
-            placeholder: "Confirm Your Password",
-            ["data-vv-as"]: "password"
+            type: 'password',
+            placeholder: 'Confirm Your Password',
+            ['data-vv-as']: 'password'
           },
           width: { xs: 12, sm: 12, lg: 6 }
         }
-      ];
+      ]
     },
     request() {
       return {
-        method: "post",
-        url: "api/auth/register"
-      };
+        method: 'post',
+        url: 'api/auth/register'
+      }
     },
     loader: () => true
   },
   methods: {
     register() {
-      this.$router.push({ name: "signIn" });
+      this.$router.push({ name: 'signIn' })
     }
   }
-};
+}
 </script>

@@ -21,7 +21,7 @@
               elevation="10"
               :key="n"
               class="mx-auto mb-4"
-              type="list-item-avatar-three-line,article"
+              type="list-item-three-line,article"
             ></v-skeleton-loader>
           </div>
           <div v-else>
@@ -85,7 +85,7 @@
                 :key="index"
                 outlined
                 small
-                class="ma-2 mainColor"
+                class="ma-1 mainColor"
               >
                 {{ skill }}
               </v-chip>
@@ -107,8 +107,8 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue";
-import { mapGetters } from "vuex";
+import CustomForm from '@/components/CustomForm.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -116,44 +116,44 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Home"
-    };
+      title: 'Home'
+    }
   },
   data() {
     return {
       pagination: {},
       noData: false,
       jobs: {},
-      props: ["html", "css", "js"],
+      props: ['html', 'css', 'js'],
       isActive: false,
-      url: "",
-      name: "",
-      country: "",
+      url: '',
+      name: '',
+      country: '',
       isLoading: false
-    };
+    }
   },
   computed: {
-    ...mapGetters(["countriesData"]),
+    ...mapGetters(['countriesData']),
 
     query() {
-      return `name=${this.name}&&country=${this.country}`;
+      return `name=${this.name}&&country=${this.country}`
     },
     formBtn() {
       return {
-        text: "Search",
+        text: 'Search',
         bindOptions: {
-          type: "submit"
+          type: 'submit'
         }
-      };
+      }
     },
     fields() {
       return [
         {
-          component: "v-text-field",
-          label: "Job Name",
-          key: "name",
-          value: "",
-          input: "input",
+          component: 'v-text-field',
+          label: 'Job Name',
+          key: 'name',
+          value: '',
+          input: 'input',
           bindOptions: {
             rules: [],
             required: true,
@@ -163,11 +163,11 @@ export default {
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "v-select",
-          label: " Job Country",
-          key: "country",
-          value: "",
-          input: "input",
+          component: 'v-select',
+          label: ' Job Country',
+          key: 'country',
+          value: '',
+          input: 'input',
           bindOptions: {
             items: this.countriesData,
             placeholder: "Search By Job's Country",
@@ -178,24 +178,24 @@ export default {
           },
           width: { xs: 12, sm: 12, lg: 12 }
         }
-      ];
+      ]
     },
     request() {
-      return {};
+      return {}
     },
     formBindOptions: {
       get() {
         return {
-          color: "mainColor",
-          class: "BaZoka",
-          href: "www.facebook.com"
-        };
+          color: 'mainColor',
+          class: 'BaZoka',
+          href: 'www.facebook.com'
+        }
       }
     }
   },
   methods: {
     getData(page = 1) {
-      this.isLoading = true;
+      this.isLoading = true
       this.axios
         .get(`api/jobs?name=${this.name}&&country=${this.country}`, {
           params: { page }
@@ -207,32 +207,32 @@ export default {
             to: data.to,
             last_page: data.last_page,
             total: Math.ceil(data.total / data.per_page)
-          };
+          }
 
-          this.jobs = data.data;
+          this.jobs = data.data
 
-          this.noData = !this.jobs?.length;
+          this.noData = !this.jobs?.length
 
-          window.scrollTo(0, 0);
+          window.scrollTo(0, 0)
         })
-        .finally(() => (this.isLoading = false));
+        .finally(() => (this.isLoading = false))
     },
 
     getInputsValues(fieldName, fieldValue) {
-      if (fieldName === "name") {
-        this.name = fieldValue;
+      if (fieldName === 'name') {
+        this.name = fieldValue
       }
 
-      if (fieldName === "country") {
-        this.country = fieldValue;
+      if (fieldName === 'country') {
+        this.country = fieldValue
       }
     }
   },
   created() {
-    this.getData();
-    this.$store.commit("getSkillsAndCountriesData");
+    this.getData()
+    this.$store.commit('getSkillsAndCountriesData')
   }
-};
+}
 </script>
 <style scoped>
 .noData {

@@ -30,15 +30,15 @@ export default {
     type: {
       type: String,
       validator: function(value) {
-        return ["pollets", "circle"].indexOf(value) !== -1;
+        return ['pollets', 'circle'].indexOf(value) !== -1
       },
-      default: "circle"
+      default: 'circle'
     },
     loaderColor: {
       type: String
     }
   }
-};
+}
 </script>
 <style scoped>
 .componentLodaing {

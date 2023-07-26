@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue";
-import { mapGetters } from "vuex";
+import CustomForm from '@/components/CustomForm.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -24,28 +24,28 @@ export default {
   metaInfo() {
     return {
       title: `Create Job`
-    };
+    }
   },
   data: () => ({}),
   computed: {
-    ...mapGetters(["countriesData", "skillsData"]),
+    ...mapGetters(['countriesData', 'skillsData']),
     formBtn() {
       return {
-        text: "Create",
+        text: 'Create',
         bindOptions: {
-          type: "submit",
-          color: "mainColor"
+          type: 'submit',
+          color: 'mainColor'
         }
-      };
+      }
     },
     fields() {
       return [
         {
-          component: "v-text-field",
-          label: "Job Name",
-          key: "name",
-          value: "",
-          rules: "required|min:10|max:40",
+          component: 'v-text-field',
+          label: 'Job Name',
+          key: 'name',
+          value: '',
+          rules: 'required|min:10|max:40',
           bindOptions: {
             required: true,
             placeholder: "Write Job's Name",
@@ -54,11 +54,11 @@ export default {
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-text-field",
-          label: "Job Title",
-          key: "title",
-          value: "",
-          rules: "required|min:10|max:60",
+          component: 'v-text-field',
+          label: 'Job Title',
+          key: 'title',
+          value: '',
+          rules: 'required|min:10|max:60',
           bindOptions: {
             required: true,
             placeholder: "Write Job's Title",
@@ -67,37 +67,37 @@ export default {
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-textarea",
-          label: "Job Description",
-          key: "description",
-          value: "",
-          rules: "required|min:200|max:2000",
+          component: 'v-textarea',
+          label: 'Job Description',
+          key: 'description',
+          value: '',
+          rules: 'required|min:200|max:2000',
           bindOptions: {
             required: true,
-            placeholder: "Write job Description",
+            placeholder: 'Write job Description',
             counter: 2000
           },
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "v-textarea",
-          label: "Qualification",
-          key: "qualifications",
-          value: "",
-          rules: "required|min:100|max:2000",
+          component: 'v-textarea',
+          label: 'Qualification',
+          key: 'qualifications',
+          value: '',
+          rules: 'required|min:100|max:2000',
           bindOptions: {
             required: true,
-            placeholder: "Write job Employee Qualification",
+            placeholder: 'Write job Employee Qualification',
             counter: 2000
           },
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "v-select",
-          label: " Job Country",
-          key: "country",
-          value: "",
-          rules: "required",
+          component: 'v-select',
+          label: ' Job Country',
+          key: 'country',
+          value: '',
+          rules: 'required',
           bindOptions: {
             items: this.countriesData,
             menuProps: { offsetY: true },
@@ -106,38 +106,38 @@ export default {
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-text-field",
-          label: "From ? Years OF Experience",
-          key: "experience->from",
+          component: 'v-text-field',
+          label: 'From ? Years OF Experience',
+          key: 'experience->from',
           value: null,
-          rules: "required|integer|min_value:0",
+          rules: 'required|integer|min_value:0',
           bindOptions: {
-            placeholder: "From ? Years OF Experience",
+            placeholder: 'From ? Years OF Experience',
             counter: 2,
-            type: "number",
+            type: 'number',
             min: 0
           },
           width: { xs: 6, sm: 3, lg: 2 }
         },
         {
-          component: "v-text-field",
-          label: "To ? Years OF Experience",
-          key: "experience->to",
+          component: 'v-text-field',
+          label: 'To ? Years OF Experience',
+          key: 'experience->to',
           value: null,
-          rules: "required|integer|min_value:1",
+          rules: 'required|integer|min_value:1',
           bindOptions: {
-            placeholder: "To ? Years OF Experience",
-            type: "number",
+            placeholder: 'To ? Years OF Experience',
+            type: 'number',
             min: 1
           },
           width: { xs: 6, sm: 3, lg: 2 }
         },
         {
-          component: "v-text-field",
-          label: "Job Address",
-          key: "address",
-          value: "",
-          rules: "required|min:20|max:100",
+          component: 'v-text-field',
+          label: 'Job Address',
+          key: 'address',
+          value: '',
+          rules: 'required|min:20|max:100',
           bindOptions: {
             placeholder: "Write Job's Address",
             counter: 100
@@ -145,11 +145,11 @@ export default {
           width: { xs: 12, sm: 12, lg: 8 }
         },
         {
-          component: "v-select",
-          label: "job Skills",
-          key: "skills",
-          value: "",
-          rules: "required|min: 2|max:50",
+          component: 'v-select',
+          label: 'job Skills',
+          key: 'skills',
+          value: '',
+          rules: 'required|min: 2|max:50',
           bindOptions: {
             items: this.skillsData,
             menuProps: { offsetY: true },
@@ -161,13 +161,13 @@ export default {
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-select",
-          label: "Job Type",
-          key: "type",
-          value: "",
-          rules: "required",
+          component: 'v-select',
+          label: 'Job Type',
+          key: 'type',
+          value: '',
+          rules: 'required',
           bindOptions: {
-            items: ["Full Time", "Part Time"],
+            items: ['Full Time', 'Part Time'],
             menuProps: { offsetY: true },
             chips: true
           },
@@ -175,86 +175,86 @@ export default {
         },
 
         {
-          component: "v-text-field",
-          label: "Company Name",
-          key: "companyName",
-          value: "",
-          rules: "required|min:10|max:40",
+          component: 'v-text-field',
+          label: 'Company Name',
+          key: 'companyName',
+          value: '',
+          rules: 'required|min:10|max:40',
           bindOptions: {
-            placeholder: "Write Company Name",
+            placeholder: 'Write Company Name',
             counter: 40
           },
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-text-field",
-          label: "Salary",
-          key: "salary",
-          value: "",
-          rules: "required|integer|min_value:1",
+          component: 'v-text-field',
+          label: 'Salary',
+          key: 'salary',
+          value: '',
+          rules: 'required|integer|min_value:1',
           bindOptions: {
-            placeholder: "Write Salary In Dollars",
-            type: "number",
+            placeholder: 'Write Salary In Dollars',
+            type: 'number',
             min: 1,
-            prependIcon: "$"
+            prependIcon: '$'
           },
           width: { xs: 12, sm: 6, lg: 4 }
         },
         {
-          component: "v-textarea",
-          label: "About Company",
-          key: "aboutCompany",
-          value: "",
-          rules: "required|min:50|max:1000",
+          component: 'v-textarea',
+          label: 'About Company',
+          key: 'aboutCompany',
+          value: '',
+          rules: 'required|min:50|max:1000',
           bindOptions: {
             required: true,
-            placeholder: "Write Brief About Company",
+            placeholder: 'Write Brief About Company',
             counter: 1000,
-            rows: "5"
+            rows: '5'
           },
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "v-file-input",
-          label: "Company Logo",
-          key: "logo",
+          component: 'v-file-input',
+          label: 'Company Logo',
+          key: 'logo',
           value: null,
-          rules: "required",
+          rules: 'required',
           bindOptions: {
-            placeholder: "Insert Company Logo",
-            prependIcon: "mdi-camera",
+            placeholder: 'Insert Company Logo',
+            prependIcon: 'mdi-camera',
             chips: true
           },
           width: { xs: 12, sm: 12, lg: 12 }
         },
         {
-          component: "v-switch",
-          label: "Availability",
-          key: "status",
+          component: 'v-switch',
+          label: 'Availability',
+          key: 'status',
           value: 1,
           bindOptions: {
-            ["true-value"]: 1,
-            ["false-value"]: 0
+            ['true-value']: 1,
+            ['false-value']: 0
           },
           width: { xs: 12, sm: 12, lg: 12 }
         }
-      ];
+      ]
     },
     request() {
       return {
-        method: "post",
+        method: 'post',
         url: `api/job/create`,
         data: this.user
-      };
+      }
     }
   },
   methods: {
     create(res) {
-      this.$router.push({ name: "job/view", params: { id: res.data.job.id } });
+      this.$router.push({ name: 'job/view', params: { id: res.data.job.id } })
     }
   },
   created() {
-    this.$store.commit("getSkillsAndCountriesData");
+    this.$store.commit('getSkillsAndCountriesData')
   }
-};
+}
 </script>

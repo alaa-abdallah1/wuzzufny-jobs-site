@@ -32,16 +32,16 @@ export default {
   data: () => ({
     icons: [
       {
-        href: "https://www.linkedin.com/in/alaa-abdallah1/",
-        name: "mdi-linkedin"
+        href: 'https://www.linkedin.com/in/alaa-abdallah1/',
+        name: 'mdi-linkedin'
       },
       {
-        href: "https://github.com/alaa-abdallah1",
-        name: "mdi-github"
+        href: 'https://github.com/alaa-abdallah1',
+        name: 'mdi-github'
       }
     ]
   })
-};
+}
 </script>
 
 <style scoped>

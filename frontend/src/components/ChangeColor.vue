@@ -43,49 +43,49 @@
 </template>
 
 <script>
-let root = document.documentElement;
+let root = document.documentElement
 
 export default {
   data: () => ({
     publicPath: process.env.BASE_URL,
-    color: "#fff",
+    color: '#fff',
     mode: false,
     colors: [
-      "#ffdd00",
-      "#0fdb2e",
-      "#e10d09",
-      "#0abee6",
-      "#db0fc0",
-      "#da7410",
-      "#1872f2",
-      "#14ccb4"
+      '#ffdd00',
+      '#0fdb2e',
+      '#e10d09',
+      '#0abee6',
+      '#db0fc0',
+      '#da7410',
+      '#1872f2',
+      '#14ccb4'
     ]
   }),
   methods: {
     changeColor(color) {
-      this.color = color;
-      this.showColor();
+      this.color = color
+      this.showColor()
     },
     changeMode() {
-      this.mode = !this.mode;
-      localStorage.mode = this.mode;
+      this.mode = !this.mode
+      localStorage.mode = this.mode
 
       if (this.mode) {
-        this.$vuetify.theme.dark = true;
+        this.$vuetify.theme.dark = true
       } else {
-        this.$vuetify.theme.dark = false;
+        this.$vuetify.theme.dark = false
       }
     },
     showColor() {
       // update the main Color In local storage
-      localStorage.mainColor = this.color;
+      localStorage.mainColor = this.color
 
       // update the main Color In Vuetify Theme
-      this.$vuetify.theme.themes.dark.mainColor = this.color;
-      this.$vuetify.theme.themes.light.mainColor = this.color;
+      this.$vuetify.theme.themes.dark.mainColor = this.color
+      this.$vuetify.theme.themes.light.mainColor = this.color
 
       // update the main Color In Succ File
-      root.style.setProperty("--mainColor", this.color);
+      root.style.setProperty('--mainColor', this.color)
     }
     // changeMode() {
     //   // update the main Color In local storage
@@ -103,29 +103,29 @@ export default {
   created() {
     // check if mode Exist in Local storage
     if (localStorage.mode) {
-      if (String(localStorage.mode).toLowerCase() == "true") {
-        this.$vuetify.theme.dark = true;
-        this.mode = true;
+      if (String(localStorage.mode).toLowerCase() == 'true') {
+        this.$vuetify.theme.dark = true
+        this.mode = true
       } else {
-        this.$vuetify.theme.dark = false;
-        this.mode = false;
+        this.$vuetify.theme.dark = false
+        this.mode = false
       }
     } else {
-      localStorage.setItem("mode", true);
+      localStorage.setItem('mode', true)
     }
 
     //check if mainColor Exist in Local storage
     if (localStorage.mainColor) {
       // update color in input
-      this.color = localStorage.mainColor;
+      this.color = localStorage.mainColor
       // update the main Color In Succ File
-      root.style.setProperty("--mainColor", this.color);
+      root.style.setProperty('--mainColor', this.color)
     } else {
-      localStorage.setItem("mainColor", "");
-      root.style.setProperty("--mainColor", "#edc307");
+      localStorage.setItem('mainColor', '')
+      root.style.setProperty('--mainColor', '#edc307')
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -173,7 +173,7 @@ export default {
   border: none !important;
 }
 .sittings .inputColor::after {
-  content: "change color";
+  content: 'change color';
   color: aliceblue;
   position: absolute;
   top: 10px;

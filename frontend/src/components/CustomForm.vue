@@ -59,10 +59,10 @@ import {
   VSelect,
   VTextarea,
   VFileInput
-} from "vuetify/es5/components";
-import Password from "./password";
-import Avatar from "./Avatar";
-import { mapActions } from "vuex";
+} from 'vuetify/es5/components'
+import Password from './password'
+import Avatar from './Avatar'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -110,19 +110,19 @@ export default {
   computed: {},
   methods: {
     ...mapActions({
-      loadingStatus: "loader/loadingStatus",
-      popupData: "popup/popupData"
+      loadingStatus: 'loader/loadingStatus',
+      popupData: 'popup/popupData'
     }),
 
     input(fieldName, fieldValue) {
-      this.$emit("input", fieldName, fieldValue);
+      this.$emit('input', fieldName, fieldValue)
     },
 
     funcioncall(eventType, fieldName, fieldValue) {
       if (eventType) {
-        this[eventType](fieldName, fieldValue);
+        this[eventType](fieldName, fieldValue)
       } else {
-        return "";
+        return ''
       }
     },
 
@@ -130,61 +130,61 @@ export default {
       this.$validator.validateAll().then(res => {
         if (res) {
           if (this.request.url) {
-            this.loadingStatus(true);
+            this.loadingStatus(true)
             var result = this.fields.map(function(field) {
-              return { [field.key]: field.value };
-            });
-            var data = Object.assign({}, ...result);
-            var formData = new FormData();
+              return { [field.key]: field.value }
+            })
+            var data = Object.assign({}, ...result)
+            var formData = new FormData()
             Object.keys(data).forEach(key => {
               if (data[key] && Array.isArray(data[key])) {
-                data[key].forEach(value => formData.append(`${key}[]`, value));
+                data[key].forEach(value => formData.append(`${key}[]`, value))
               } else {
-                formData.append(key, data[key]);
+                formData.append(key, data[key])
               }
-            });
+            })
             this.axios({
               method: this.request.method,
               url: this.request.url,
               data: formData,
               headers: {
-                "X-Requested-With": "XMLHttpRequest"
+                'X-Requested-With': 'XMLHttpRequest'
               }
             })
               .then(res => {
-                this.loadingStatus(false);
+                this.loadingStatus(false)
                 if (this.popup) {
                   this.popupData({
                     show: true,
                     text: res.data.msg
-                  });
+                  })
                 }
-                this.$emit("success", res);
+                this.$emit('success', res)
               })
               .catch(err => {
-                this.loadingStatus(false);
+                this.loadingStatus(false)
                 if (this.errorsMix) {
                   this.$setLaravelValidationErrorsFromResponse(
                     err.response.data
-                  );
+                  )
                 } else {
                   this.popupData({
                     show: true,
-                    color: "#c92114",
+                    color: '#c92114',
                     text: Object.values(err.response.data.errors)[0].toString()
-                  });
+                  })
                 }
-                this.$emit("error", err.response);
-              });
+                this.$emit('error', err.response)
+              })
           } else {
-            this.$emit("function");
+            this.$emit('function')
           }
         }
-      });
+      })
     }
   },
   created() {}
-};
+}
 </script>
 
 <style>

@@ -21,8 +21,8 @@
   </div>
 </template>
 <script>
-import { bus } from "../main";
-import { mapActions } from "vuex";
+import { bus } from '../main'
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -34,86 +34,86 @@ export default {
   data() {
     return {
       pagination: {},
-      query: ""
-    };
+      query: ''
+    }
   },
   computed: {
     id() {
-      return this.$route.query.page;
+      return this.$route.query.page
     },
     linkUrl() {
       if (this.query) {
-        return this.url + "?" + this.query;
+        return this.url + '?' + this.query
       } else {
-        return this.url;
+        return this.url
       }
     }
   },
   methods: {
     ...mapActions({
-      loadingStatus: "loader/loadingStatus"
+      loadingStatus: 'loader/loadingStatus'
     }),
     getData(paginateLinkurl, isPagination = false) {
-      this.loadingStatus(true);
-      var url = "";
+      this.loadingStatus(true)
+      var url = ''
       if (this.query && isPagination) {
-        url = paginateLinkurl + "&&" + this.query;
+        url = paginateLinkurl + '&&' + this.query
       } else if (!this.query && isPagination) {
-        url = paginateLinkurl;
+        url = paginateLinkurl
       } else {
-        url = this.linkUrl;
+        url = this.linkUrl
       }
 
       this.axios.get(url).then(res => {
-        this.pagination = res.data;
-        this.$emit("paginationData", res.data.data);
+        this.pagination = res.data
+        this.$emit('paginationData', res.data.data)
         this.$nextTick(() => {
-          this.disableButtons();
-          this.loadingStatus(false);
-        });
-      });
+          this.disableButtons()
+          this.loadingStatus(false)
+        })
+      })
     },
     disableButtons() {
-      var nextId = this.pagination.links.length - 1;
-      var nextEl = document.getElementById(`id-${nextId}`);
-      var prevEl = document.getElementById(`id-0`);
-      var id2El = document.getElementById(`id-2`); // to handel the second button
+      var nextId = this.pagination.links.length - 1
+      var nextEl = document.getElementById(`id-${nextId}`)
+      var prevEl = document.getElementById(`id-0`)
+      var id2El = document.getElementById(`id-2`) // to handel the second button
       if (
         this.pagination &&
         this.pagination.current_page === 1 &&
         this.pagination.last_page !== this.pagination.current_page + 1
       ) {
-        id2El.disabled = false;
-        id2El.classList.remove("disabled");
+        id2El.disabled = false
+        id2El.classList.remove('disabled')
       }
       if (
         this.pagination &&
         this.pagination.current_page === this.pagination.last_page
       ) {
-        nextEl.disabled = true;
-        nextEl.classList.add("disabled");
+        nextEl.disabled = true
+        nextEl.classList.add('disabled')
       } else {
-        nextEl.disabled = false;
-        nextEl.classList.remove("disabled");
+        nextEl.disabled = false
+        nextEl.classList.remove('disabled')
       }
 
       if (this.pagination && this.pagination.current_page === 1) {
-        prevEl.disabled = true;
-        prevEl.classList.add("disabled");
+        prevEl.disabled = true
+        prevEl.classList.add('disabled')
       } else {
-        prevEl.disabled = false;
-        prevEl.classList.remove("disabled");
+        prevEl.disabled = false
+        prevEl.classList.remove('disabled')
       }
     }
   },
   created() {
-    this.getData();
-    bus.$on("search", query => {
-      this.query = query;
-      this.getData(this.linkUrl);
-    });
+    this.getData()
+    bus.$on('search', query => {
+      this.query = query
+      this.getData(this.linkUrl)
+    })
   }
-};
+}
 </script>
 <style scoped>
 .pagination {

@@ -191,13 +191,13 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from 'vuex'
 
 export default {
   metaInfo() {
     return {
-      title: this.job.name
-    };
+      title: 'Jobs | ' + this.job.name
+    }
   },
   data() {
     return {
@@ -207,65 +207,65 @@ export default {
       bookmarked: false,
       bookmarkLoading: false,
       applied: false
-    };
+    }
   },
   computed: {
-    ...mapState(["loader"]),
-    ...mapGetters(["loggedIn"]),
+    ...mapState(['loader']),
+    ...mapGetters(['loggedIn']),
     id() {
-      return this.$route.params.id;
+      return this.$route.params.id
     },
     jobInfo() {
       return [
-        { name: "salary", value: "$ " + this.job.salary },
-        { name: "type", value: this.job.type },
+        { name: 'salary', value: '$ ' + this.job.salary },
+        { name: 'type', value: this.job.type },
         {
-          name: "experience",
+          name: 'experience',
           value:
-            this.job.experience.from + " : " + this.job.experience.to + " years"
+            this.job.experience.from + ' : ' + this.job.experience.to + ' years'
         },
-        { name: "country", value: this.job.country },
-        { name: "address", value: this.job.address },
-        { name: "published at", value: this.job.created_at }
-      ];
+        { name: 'country', value: this.job.country },
+        { name: 'address', value: this.job.address },
+        { name: 'published at', value: this.job.created_at }
+      ]
     }
   },
   methods: {
     ...mapActions({
-      loadingStatus: "loader/loadingStatus"
+      loadingStatus: 'loader/loadingStatus'
     }),
     getData() {
-      this.loadingStatus(true);
+      this.loadingStatus(true)
       this.axios.get(`api/job/view/${this.id}`).then(res => {
-        this.job = res.data.job;
-        this.similarJobs = res.data.similarJobs;
-        this.bookmarked = this.job.bookmarks.length != 0 ? true : false;
-        this.applied = this.job.applies.length != 0 ? true : false;
-        this.loadingStatus(false);
-      });
+        this.job = res.data.job
+        this.similarJobs = res.data.similarJobs
+        this.bookmarked = this.job.bookmarks.length != 0 ? true : false
+        this.applied = this.job.applies.length != 0 ? true : false
+        this.loadingStatus(false)
+      })
     },
     bookmark() {
-      this.bookmarkLoading = true;
+      this.bookmarkLoading = true
       this.axios.post(`api/job/bookmark/${this.id}`).then(res => {
-        this.bookmarked = res.data;
-        this.bookmarkLoading = false;
-      });
+        this.bookmarked = res.data
+        this.bookmarkLoading = false
+      })
     },
     apply() {
       this.axios.post(`api/job/apply/${this.id}`).then(() => {
-        this.applied = true;
-      });
+        this.applied = true
+      })
     }
   },
   created() {
-    this.getData();
+    this.getData()
   },
   watch: {
     id() {
-      this.getData();
+      this.getData()
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@
 
 <style>
 .cover {
-  background: url("../assets/images/home-page-cover.jpg");
+  background: url('../assets/images/home-page-cover.jpg');
   background-size: cover;
   height: 100%;
   width: 100%;

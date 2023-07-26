@@ -1,16 +1,17 @@
 <template>
   <div>
     <v-toolbar dense>
-      <v-app-bar-nav-icon
-        class="d-sm-none"
-        @click="drawer = true"
-      ></v-app-bar-nav-icon>
       <router-link to="/" class="text-decoration-none mainColor--text">
         <v-toolbar-title left>
           <strong><em>Wuzzufny</em></strong>
         </v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
+
+      <v-app-bar-nav-icon
+        class="d-sm-none"
+        @click="drawer = true"
+      ></v-app-bar-nav-icon>
 
       <template>
         <v-btn
@@ -116,111 +117,111 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState, mapMutations } from 'vuex'
 export default {
-  name: "Navbar",
+  name: 'Navbar',
 
   data: () => ({
     drawer: false,
     group: null
   }),
   computed: {
-    ...mapState(["user"]),
+    ...mapState(['user']),
     loggedIn() {
-      return this.$store.getters.loggedIn;
+      return this.$store.getters.loggedIn
     },
     userLinks() {
-      return this.links.filter(link => link.status !== "guest");
+      return this.links.filter(link => link.status !== 'guest')
     },
     guestLinks() {
-      return this.links.filter(link => link.status !== "user");
+      return this.links.filter(link => link.status !== 'user')
     },
     userName() {
       if (this.loggedIn) {
         if (this.user.name.length > 12) {
-          return this.user.name.slice(0, 12) + "...";
+          return this.user.name.slice(0, 12) + '...'
         } else {
-          return this.user.name;
+          return this.user.name
         }
       }
-      return "";
+      return ''
     },
     links() {
       return [
         // { name: "Home", icon: "mdi-home", route: "/" },
         {
-          name: "Home",
-          icon: "mdi-home",
-          route: "/"
+          name: 'Home',
+          icon: 'mdi-home',
+          route: '/'
         },
         {
-          name: "Create Job",
-          icon: "mdi-folder-plus",
-          route: "/job/create",
-          status: "user"
+          name: 'Create Job',
+          icon: 'mdi-folder-plus',
+          route: '/job/create',
+          status: 'user'
         },
         {
           name: this.userName,
           img: this.user.avatar,
-          route: "/profile/view",
-          status: "user"
+          route: '/profile/view',
+          status: 'user'
         },
         {
-          dropdownName: "More",
-          icon: "mdi-arrow-down-drop-circle-outline",
-          route: "",
-          status: "user",
+          dropdownName: 'More',
+          icon: 'mdi-arrow-down-drop-circle-outline',
+          route: '',
+          status: 'user',
           dropdown: {
             items: [
               {
-                name: "User Jobs",
-                icon: "mdi-home",
-                route: "/profile/jobs",
-                status: "user",
+                name: 'My Jobs',
+                icon: 'mdi-home',
+                route: '/profile/jobs',
+                status: 'user',
                 active: true
               },
               {
-                name: "Edit Profile",
-                icon: "mdi-pencil",
-                route: "/profile/edit",
-                status: "user"
+                name: 'Edit Profile',
+                icon: 'mdi-pencil',
+                route: '/profile/edit',
+                status: 'user'
               },
               {
-                name: "Log Out",
-                icon: "mdi-account-plus",
-                status: "user",
-                function: "logoutUser"
+                name: 'Log Out',
+                icon: 'mdi-account-plus',
+                status: 'user',
+                function: 'logoutUser'
               }
             ]
           }
         },
         {
-          name: "Sign In",
-          icon: "mdi-login",
-          route: "/sign-in",
-          status: "guest"
+          name: 'Sign In',
+          icon: 'mdi-login',
+          route: '/sign-in',
+          status: 'guest'
         },
         {
-          name: "Sign Up",
-          icon: "mdi-account-plus",
-          route: "/sign-up",
-          status: "guest"
+          name: 'Sign Up',
+          icon: 'mdi-account-plus',
+          route: '/sign-up',
+          status: 'guest'
         }
-      ];
+      ]
     }
   },
   methods: {
-    ...mapMutations(["logout"]),
+    ...mapMutations(['logout']),
     logoutUser() {
-      this.logout();
+      this.logout()
     },
     fireFunction(func) {
       if (func) {
-        this[func]();
+        this[func]()
       }
     }
   }
-};
+}
 </script>
 <style>
 .navbar-links-sm .textLink {

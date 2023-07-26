@@ -1,23 +1,23 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
 // import Home from "../views/Home";
-import SignIn from "../views/sign/sign-in.vue";
-import SignUp from "../views/sign/sign-up";
-import Logout from "../views/sign/logout";
+import SignIn from '../views/sign/sign-in.vue'
+import SignUp from '../views/sign/sign-up'
+import Logout from '../views/sign/logout'
 
-import Jobs from "../views/jobs/index";
-import ViewJob from "../views/jobs/view";
-import CreateJob from "../views/jobs/create";
-import EditJob from "../views/jobs/edit";
+import Jobs from '../views/jobs/index'
+import ViewJob from '../views/jobs/view'
+import CreateJob from '../views/jobs/create'
+import EditJob from '../views/jobs/edit'
 
-import Profile from "../views/profile/index";
-import profileEdit from "../views/profile/edit";
-import UserJobs from "../views/profile/jobs";
+import Profile from '../views/profile/index'
+import profileEdit from '../views/profile/edit'
+import UserJobs from '../views/profile/jobs'
 
-import NotFound from "../views/notFound";
+import NotFound from '../views/notFound'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   // {
@@ -26,89 +26,89 @@ const routes = [
   //   component: Home
   // },
   {
-    path: "/sign-in",
-    name: "signIn",
+    path: '/sign-in',
+    name: 'signIn',
     component: SignIn,
     meta: { forvisitors: true }
   },
   {
-    path: "/sign-up",
-    name: "signUp",
+    path: '/sign-up',
+    name: 'signUp',
     component: SignUp,
     meta: { forvisitors: true }
   },
   {
-    path: "/logout",
-    name: "logout",
+    path: '/logout',
+    name: 'logout',
     component: Logout,
     meta: { forAuth: true }
   },
   {
-    path: "/",
-    name: "Home",
+    path: '/',
+    name: 'Home',
     component: Jobs
   },
   {
-    path: "/job/view/:id?",
-    name: "job/view",
+    path: '/job/view/:id?',
+    name: 'job/view',
     component: ViewJob
   },
   {
-    path: "/job/create",
-    name: "job/create",
+    path: '/job/create',
+    name: 'job/create',
     component: CreateJob,
     meta: { forAuth: true }
   },
   {
-    path: "/job/:id/edit",
-    name: "job/edit",
+    path: '/job/:id/edit',
+    name: 'job/edit',
     component: EditJob,
     meta: { forAuth: true }
   },
   {
-    path: "/profile/view/:id?",
-    name: "profile/view",
+    path: '/profile/view/:id?',
+    name: 'profile/view',
     component: Profile
   },
   {
-    path: "/profile/edit",
-    name: "profile/edit",
+    path: '/profile/edit',
+    name: 'profile/edit',
     component: profileEdit,
     meta: { forAuth: true }
   },
   {
-    path: "/profile/jobs",
-    name: "profile/jobs",
+    path: '/profile/jobs',
+    name: 'profile/jobs',
     component: UserJobs,
     meta: { forAuth: true }
   },
   {
-    path: "*",
-    name: "notFound",
+    path: '*',
+    name: 'notFound',
     component: NotFound
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
 router.beforeEach((to, from, next) => {
-  var loggedIn = localStorage.getItem("token");
+  var loggedIn = localStorage.getItem('token')
   // if user authianticated
   if (to.matched.some(record => record.meta.forAuth) && !loggedIn) {
-    next("/sign-in");
+    next('/sign-in')
   } else {
-    next();
+    next()
   }
   // if user dosen't authianticated
   if (to.matched.some(record => record.meta.forvisitors) && loggedIn) {
-    next("/");
+    next('/')
   } else {
-    next();
+    next()
   }
-});
+})
 
-export default router;
+export default router

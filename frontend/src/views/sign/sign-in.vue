@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import CustomForm from "@/components/CustomForm.vue";
+import CustomForm from '@/components/CustomForm.vue'
 
 export default {
   components: {
@@ -36,62 +36,62 @@ export default {
   metaInfo() {
     return {
       title: `Sign In`
-    };
+    }
   },
   computed: {
     formBtn() {
       return {
-        text: "Sign In",
+        text: 'Sign In',
         center: true,
         bindOptions: {
-          type: "submit",
-          color: "mainColor"
+          type: 'submit',
+          color: 'mainColor'
         }
-      };
+      }
     },
     fields() {
       return [
         {
-          component: "v-text-field",
-          label: "Email",
-          key: "email",
-          value: "",
-          rules: "required|email",
+          component: 'v-text-field',
+          label: 'Email',
+          key: 'email',
+          value: '',
+          rules: 'required|email',
           bindOptions: {
-            type: "email",
+            type: 'email',
             required: true,
-            placeholder: "Write Your Email"
+            placeholder: 'Write Your Email'
           },
           width: { xs: 12, sm: 12, lg: 6 }
         },
         {
-          component: "password",
-          label: "Password",
-          key: "password",
-          value: "",
-          rules: "required|min:8",
+          component: 'password',
+          label: 'Password',
+          key: 'password',
+          value: '',
+          rules: 'required|min:8',
           bindOptions: {
-            type: "password",
-            placeholder: "Write Your Password"
+            type: 'password',
+            placeholder: 'Write Your Password'
           },
           width: { xs: 12, sm: 12, lg: 4 }
         }
-      ];
+      ]
     },
     request() {
       return {
-        method: "post",
-        url: "api/auth/login"
-      };
+        method: 'post',
+        url: 'api/auth/login'
+      }
     }
   },
   methods: {
     login(response) {
       if (response.status === 200) {
-        this.$store.commit("userData", response.data);
-        this.$router.push({ name: "Home" });
+        this.$store.commit('userData', response.data)
+        this.$router.push({ name: 'Home' })
       }
     }
   }
-};
+}
 </script>

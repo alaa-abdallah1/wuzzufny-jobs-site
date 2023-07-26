@@ -1,21 +1,21 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import vuetify from "./plugins/vuetify";
-import VeeValidate from "./plugins/VeeValidate";
-import axios from "axios";
-import VueAxios from "vue-axios";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import vuetify from './plugins/vuetify'
+import VeeValidate from './plugins/VeeValidate'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 // use Confirm Box as a global component
-import Confirm from "./components/Confirm";
-Vue.component("Confirm", Confirm);
+import Confirm from './components/Confirm'
+Vue.component('Confirm', Confirm)
 // use Loader as a global component
-import Skeleton from "./components/Skeleton";
-Vue.component("Skeleton", Skeleton);
+import Skeleton from './components/Skeleton'
+Vue.component('Skeleton', Skeleton)
 
-import VueMeta from "vue-meta";
-Vue.use(VueMeta);
+import VueMeta from 'vue-meta'
+Vue.use(VueMeta)
 // import Echo from "laravel-echo";
 
 // window.Pusher = require("pusher-js");
@@ -27,10 +27,10 @@ Vue.use(VueMeta);
 //   forceTLS: true
 // });
 
-export const bus = new Vue();
+export const bus = new Vue()
 
-Vue.use(VueAxios, axios);
-Vue.config.productionTip = false;
+Vue.use(VueAxios, axios)
+Vue.config.productionTip = false
 new Vue({
   router,
   store,
@@ -38,4 +38,4 @@ new Vue({
   VeeValidate,
   created() {},
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

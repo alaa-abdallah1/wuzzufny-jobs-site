@@ -17,9 +17,9 @@ export default {
   },
   data: () => ({
     attrs: {
-      class: "mb-6",
+      class: 'mb-6',
       elevation: 2
     }
   })
-};
+}
 </script>

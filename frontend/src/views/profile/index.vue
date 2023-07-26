@@ -60,111 +60,111 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 export default {
   metaInfo() {
     return {
-      title: "Profile"
-    };
+      title: 'Profile'
+    }
   },
   data() {
     return {
       user: {},
       loading: true
-    };
+    }
   },
   computed: {
     ...mapState({
-      authUser: "user"
+      authUser: 'user'
     }),
     background() {
-      return require("@/assets/images/bg-cover.jpg");
+      return require('@/assets/images/bg-cover.jpg')
     },
     isUserProfile() {
-      return this.user.id === this.authUser.id;
+      return this.user.id === this.authUser.id
     },
     id() {
-      return this.$route.params.id;
+      return this.$route.params.id
     },
     loggedIn() {
-      return this.$store.getters.loggedIn;
+      return this.$store.getters.loggedIn
     },
     information() {
       return [
         {
-          icon: "mdi-email-check-outline",
+          icon: 'mdi-email-check-outline',
           text: this.user.email
         },
         {
-          icon: "mdi-folder-open",
+          icon: 'mdi-folder-open',
           text: this.user.job
         },
         {
-          icon: "mdi-cellphone",
+          icon: 'mdi-cellphone',
           text: this.user.phone
         },
         {
-          icon: "mdi-location-enter",
+          icon: 'mdi-location-enter',
           text: this.user.country
         },
         {
-          icon: "mdi-gender-female",
+          icon: 'mdi-gender-female',
           text: this.user.gender
         }
-      ];
+      ]
     }
   },
   methods: {
     cover() {
-      var bgImage;
+      var bgImage
       if (this.$vuetify.theme.dark) {
-        bgImage = require("@/assets/images/bg-cover-dark.jpg");
+        bgImage = require('@/assets/images/bg-cover-dark.jpg')
       } else {
-        bgImage = require("@/assets/images/bg-cover.jpg");
+        bgImage = require('@/assets/images/bg-cover.jpg')
       }
 
       return {
         backgroundImage: `url("${bgImage}")`
-      };
+      }
     },
     getImgUrl() {
-      return require("@/assets/images/profile-pic.jpg");
+      return require('@/assets/images/profile-pic.jpg')
     },
     getUserData() {
       this.axios.get(`api/profile/${this.id}`).then(res => {
-        this.user = res.data;
-        this.loading = false;
-      });
+        this.user = res.data
+        this.loading = false
+      })
     },
     setUserDate() {
       if (this.id) {
-        this.getUserData();
+        this.getUserData()
       } else {
         if (this.loggedIn) {
-          this.user = this.authUser;
-          this.loading = false;
+          this.user = this.authUser
+          this.loading = false
         } else {
-          this.$router.push("/sign-in");
+          this.$router.push('/sign-in')
         }
       }
     }
   },
   created() {
-    this.setUserDate();
+    this.setUserDate()
   },
   watch: {
     id() {
-      this.setUserDate();
+      this.setUserDate()
     }
   }
-};
+}
 </script>
 <style scoped>
 .top-section {
   /* box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%),
     0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%); */
   margin-bottom: 20px;
-  background: url("../../assets/images/bg-cover.jpg");
+  background: url('../../assets/images/bg-cover.jpg');
   background-size: 100%;
 }
 .profile-pic img {
