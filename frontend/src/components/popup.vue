@@ -32,14 +32,14 @@ export default {
     popup: {
       show: {
         type: Boolean,
-        default: true
+        default: false
       },
       text: {
         type: String
       },
       timeout: {
         type: Number,
-        default: 50000
+        default: 5000
       },
       color: {
         type: String

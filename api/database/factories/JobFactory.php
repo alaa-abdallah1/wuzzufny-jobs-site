@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Job;
+use App\Models\Skill;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobFactory extends Factory
@@ -16,64 +17,8 @@ class JobFactory extends Factory
 
     public function definition()
     {
-        $skills = [
-            'WordPress',
-            'Microsoft',
-            'Office',
-            'Adobe',
-            'Photoshop',
-            'Adobe Photoshop',
-            'Adobe Illustrator',
-            'Adobe Indesign',
-            'Interface Design',
-            'Information Technology (IT)',
-            'Graphic Design',
-            'Web Design',
-            'HTML',
-            'CSS',
-            'jQuery',
-            'Bootstrap Framework',
-            'Testing',
-            'Animation',
-            'Human Resources (HR)',
-            'Recruitment',
-            'Interviews',
-            'Employee Relations',
-            'Employment Law',
-            'IT/Software Development',
-            'Marketing/PR/Advertising',
-            'Project/Program Management',
-            'Startup',
-            'magento',
-            'HTML5',
-            'CSS3',
-            'PostgreSQL',
-            'GitPlus',
-            'Angular',
-            'TypeScript',
-            'React',
-            'Computer Science',
-            'Software Engineering',
-            'Python',
-            'Web Development',
-            'Software Development',
-            'Linux',
-            'Diango',
-            'REST',
-            'Shell Scripting',
-            'Software Technologies',
-            'API',
-        ];
-        $skillsData = array();
-        for ($i = 0; $i < 20; $i++) {
-            if ($skills) {
-                $random_keys = array_rand($skills, 20);
-                $val = $skills[$random_keys[$i]];
-                if (!in_array($val, $skillsData)) {
-                    array_push($skillsData, $val);
-                }
-            }
-        }
+        $skills =
+            Skill::inRandomOrder()->distinct()->take(20)->pluck('name');
 
         $type = $this->faker->randomElement($array = array('Full Time', 'Part Time'));
 
@@ -88,7 +33,7 @@ class JobFactory extends Factory
             'country' => $this->faker->country,
             'experience->from' => $this->faker->numberBetween($min = 1, $max = 4),
             'experience->to' => $this->faker->numberBetween($min = 5, $max = 10),
-            'skills' => $skillsData,
+            'skills' => $skills,
             'type' => $type,
             'companyName' => $this->faker->company,
             'aboutCompany' => $this->faker->text(500),

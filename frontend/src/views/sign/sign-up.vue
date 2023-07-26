@@ -1,24 +1,26 @@
 <template>
-  <v-container class="">
-    <v-layout row wrap>
-      <v-col offset-sm="3" sm="6" class="mt-4">
-        <v-card flat>
-          <h1
-            class="headline text-center font-weight-bold py-4 mainColor--text"
-          >
-            Sign Up
-          </h1>
-          <CustomForm
-            :fields="fields"
-            :formBtn="formBtn"
-            :request="request"
-            :loader="loader"
-            @success="register"
-          />
-        </v-card>
-      </v-col>
-    </v-layout>
-  </v-container>
+  <div>
+    <v-container class="">
+      <v-layout row wrap>
+        <v-col offset-sm="3" sm="6" class="mt-4">
+          <v-card flat>
+            <h1
+              class="headline text-center font-weight-bold py-4 mainColor--text"
+            >
+              Sign Up
+            </h1>
+            <CustomForm
+              :fields="fields"
+              :formBtn="formBtn"
+              :request="request"
+              :loader="loader"
+              @success="register"
+            />
+          </v-card>
+        </v-col>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
 <script>
