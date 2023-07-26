@@ -1,0 +1,72 @@
+:root {
+  --mainColor: "#edc307";
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6 !important;
+}
+
+.disabled:hover,
+[disabled]:hover,
+:disabled:hover {
+  cursor: not-allowed !important;
+}
+
+.main-color {
+  color: #d81b60;
+}
+
+.theme--light.v-pagination .v-pagination__item--active {
+  outline: none !important;
+}
+
+#app {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.theme--dark.v-chip:not(.v-chip--active),
+.theme--light .v-select .v-chip:not(.v-chip--active) {
+  background-color: var(--mainColor) !important;
+}
+
+.theme--light .v-select .v-chip:not(.v-chip--active) {
+  color: white;
+}
+
+.theme--light .v-select .mdi-close-circle::before {
+  color: white;
+}
+
+/* navbar in moblie */
+.dorpdown-menu-navbar {
+  margin: 10px -14px;
+}
+
+.dorpdown-menu-link {
+  width: 100% !important;
+}
+
+.dorpdown-menu-link .v-list-item__content {
+  margin-left: 55px;
+}
+
+.dorpdown-menu-link .v-list-item__icon {
+  position: absolute;
+  left: -25px;
+  top: 12px;
+  font-size: 35px;
+}
+
+.dorpdown-menu-link .subDorpdown-menu-link .v-list-item__content {
+  margin-left: 30px;
+}
+
+.dorpdown-menu-link .subDorpdown-menu-link.v-list-item--active {
+  color: #fff !important;
+}
+/*# sourceMappingURL=main.css.map */
