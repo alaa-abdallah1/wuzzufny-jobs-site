@@ -49,13 +49,18 @@
               v-for="(job, index) in jobs"
               :key="index"
             >
-              <div class="head mb-2">
+              <div
+                class="head d-flex mb-2"
+                :class="{ 'flex-column': $vuetify.breakpoint.smAndDown }"
+                style="justify-content: space-between"
+              >
                 <h1
-                  class="d-inline-block headline font-weight-bold mainColor--text"
+                  class="headline font-weight-bold mainColor--text"
+                  :class="{ 'mb-2': $vuetify.breakpoint.smAndDown }"
                 >
                   {{ job.name }}
                 </h1>
-                <span class="float-right">
+                <span>
                   <v-chip outlined class="mr-3 mainColor" small>
                     {{ job.type }}
                   </v-chip>

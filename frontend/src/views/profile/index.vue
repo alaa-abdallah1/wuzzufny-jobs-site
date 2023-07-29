@@ -39,10 +39,10 @@
           </p>
         </v-flex>
         <v-flex sm8 xs12>
-          <p class="overline mt-2">
+          <p v-if="user.info" class="overline mt-2">
             {{ user.info }}
           </p>
-          <div class="text-center skills mt-10">
+          <div v-if="user.skills?.length" class="text-center skills mt-10">
             <h2 class="title mainColor--text">Skills</h2>
             <v-chip
               outlined
@@ -54,6 +54,22 @@
             </v-chip>
           </div>
         </v-flex>
+      </v-row>
+
+      <v-row class="px-4">
+        <v-btn
+          v-if="!user.skills?.length"
+          small
+          class="white--text my-8 no-text-transform"
+          color="mainColor"
+          outlined
+          x-large
+          @click="() => $router.push('/profile/edit')"
+          block
+        >
+          <v-icon class="mr-2">mdi-account-question-outline </v-icon>
+          Complete your profile
+        </v-btn>
       </v-row>
     </v-container>
   </div>
@@ -90,7 +106,7 @@ export default {
       return this.$store.getters.loggedIn
     },
     information() {
-      return [
+      const info = [
         {
           icon: 'mdi-email-check-outline',
           text: this.user.email
@@ -112,6 +128,8 @@ export default {
           text: this.user.gender
         }
       ]
+
+      return info.filter(({ text }) => text)
     }
   },
   methods: {

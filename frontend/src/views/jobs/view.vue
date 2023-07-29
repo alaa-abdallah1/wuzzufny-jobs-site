@@ -49,6 +49,7 @@
                 <v-col
                   class="text-center"
                   sm="4"
+                  cols="6"
                   v-for="(info, index) in jobInfo"
                   :key="index"
                 >
@@ -97,6 +98,7 @@
               outlined
               x-large
               :disabled="applied"
+              :loading="applyLoading"
               @click="apply"
               block
             >
@@ -206,6 +208,7 @@ export default {
       loading: false,
       bookmarked: false,
       bookmarkLoading: false,
+      applyLoading: false,
       applied: false
     }
   },
@@ -252,9 +255,13 @@ export default {
       })
     },
     apply() {
-      this.axios.post(`api/job/apply/${this.id}`).then(() => {
-        this.applied = true
-      })
+      this.applyLoading = true
+      this.axios
+        .post(`api/job/apply/${this.id}`)
+        .then(() => {
+          this.applied = true
+        })
+        .finally(() => (this.applyLoading = false))
     }
   },
   created() {

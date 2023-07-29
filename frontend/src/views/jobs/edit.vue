@@ -283,7 +283,7 @@ export default {
 .viewBtn {
   position: absolute;
   right: 30px;
-  top: 21px;
+  top: 13px;
   transform: scale3d(1.5, 1.5, 1.5);
 }
 </style>
