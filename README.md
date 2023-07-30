@@ -6,7 +6,7 @@ Wuzzufny is a job search platform that helps job seekers find jobs that match th
 
 ## Screenshots
 
-https://github.com/alaa-abdallah1/wuzzufny-jobs-site/edit/main/README.md#screenshots-1
+[See some screenshots here :arrow_lower_left:](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/tree/main#screenshots-1)
 
 ## Pages
 - Home Page: Displays all available jobs and has two filters to filter jobs by name or country. The page also includes pagination to navigate through the pages. Clicking on a job redirects the user to the job details page where they can see more information about the job and apply or bookmark it.
