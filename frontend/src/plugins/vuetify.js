@@ -9,7 +9,10 @@ export default new Vuetify({
     iconfont: 'mdi'
   },
   theme: {
-    dark: String(localStorage.mode).toLowerCase() == 'true' ? true : false,
+    dark: !!(
+      localStorage.mode === undefined ||
+      String(localStorage.mode).toLowerCase() == 'true'
+    ),
     themes: {
       light: {
         error: '#ff3333',
