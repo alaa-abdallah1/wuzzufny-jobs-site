@@ -1,5 +1,5 @@
 # Wuzzufny
-Wuzzufny is a job search platform that helps job seekers find jobs that match their qualifications and helps recruiters find suitable candidates for their companies. The platform is built using HTML, CSS, JavaScript, Vue.js, Vuetify, Vuex, Laravel, PHP, OOP, MySQL, SQL, and hosted files on AWS.
+Wuzzufny is a job search platform that helps job seekers find jobs that match their qualifications and helps recruiters find suitable candidates for their companies. The platform is built using HTML, CSS, JavaScript, Vue.js, Vuetify, Vuex, Laravel, PHP, OOP, MySQL, SQL, and host files on AWS.
 
 ## Live Demo
 [View the live demo ↗.](https://wuzzufny.onrender.com)
