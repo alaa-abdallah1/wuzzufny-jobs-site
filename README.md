@@ -129,5 +129,9 @@ Wuzzufny was built using the following technologies:
 ## Contributing
 Contributions to Wuzzufny are welcome! Please submit a pull request with your changes.
 
+## Hosting
+
+[awardspace](https://cp1.awardspace.net/)
+
 ## Code owner 
 This project was created by [Alaa Abdallah](https://github.com/alaa-abdallah1)
