@@ -4,6 +4,10 @@ Wuzzufny is a job search platform that helps job seekers find jobs that match th
 ## Live Demo
 [View the live demo ↗.](https://wuzzufny.onrender.com)
 
+## Screenshots
+
+https://github.com/alaa-abdallah1/wuzzufny-jobs-site/edit/main/README.md#screenshots-1
+
 ## Pages
 - Home Page: Displays all available jobs and has two filters to filter jobs by name or country. The page also includes pagination to navigate through the pages. Clicking on a job redirects the user to the job details page where they can see more information about the job and apply or bookmark it.
 - Create Job Page: Allows recruiters to create new job postings. Users must be logged in to create a new job posting.
@@ -104,6 +108,23 @@ Wuzzufny was built using the following technologies:
 - MySQL
 - SQL
 - AWS
+
+
+## Screenshots
+
+![wuzzufny onrender com_job_view_150](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/54997dcf-4fa0-48b6-a2c8-4285aae0ad79)
+
+![wuzzufny onrender com_ (1)](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/61910c4d-38a2-4598-9781-36e5f2c2277b)
+
+![wuzzufny onrender com_](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/e7194c1c-6611-412b-9b1e-e421bab1c759)
+
+![wuzzufny onrender com_ (2)](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/7afa6d8c-e1ca-4f74-a365-8cd0dda16fa7)
+
+![wuzzufny onrender com_ (5)](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/f15b6e32-94bc-4633-a74d-ab66183aa002)
+
+![wuzzufny onrender com_ (4)](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/aba59d6a-89a4-48ed-99d9-6304f82739bc)
+
+![wuzzufny onrender com_ (3)](https://github.com/alaa-abdallah1/wuzzufny-jobs-site/assets/56931924/dc63a029-2016-490b-a303-32670e3b2190)
 
 ## Contributing
 Contributions to Wuzzufny are welcome! Please submit a pull request with your changes.
